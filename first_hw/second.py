@@ -14,11 +14,28 @@ class Subscription:
     is_archived: bool # заархивирована ли подписка (недоступна для покупки)
 
 
+
+
 class User:
     id: int = 1
     nickname: str = 'username' # Никнейм пользователя
     subscriptions: list[int] = [] # Подписки пользователя
     description: str = 'chill' # Описание аккаунта
+    
+    def __init__(self, id, nickname, description):
+        self.id = id
+        self.nickname = nickname
+        self.description = description
+        self.subscriptions = []
+
+    def subsribe(self, subscription):
+        self.subscriptions.append(subscription)
+
+    def change_nickname(self, new_nickname):
+        self.nickname = new_nickname
+
+    def change_description(self, new_description):
+        self.description = new_description
 
     def print_user(self):
         print(f'### User: {self.id}')
@@ -35,11 +52,3 @@ class Article:
     text: str # Содержание статьи
     links: str # Ссылки на доп. материалы
 
-user_1 = User()
-user_1.print_user()
-user_2 = user_1
-user_2.print_user()
-
-user_2.nickname = 'changed userName'
-user_1.print_user()
-user_2.print_user()

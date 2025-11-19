@@ -9,3 +9,5 @@ def new_func():
 
 new_func()
 print()
+
+new_func()
