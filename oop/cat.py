@@ -1,34 +1,36 @@
-class Cat:
-    name = 'Барсик'
-    age = 0
-    weight = 0.1
-    speed = 0
-    fq = 100
+class Animal:
+    def __init__(self, a, w, s):
+        self.age = a
+        self.weight = w
+        self.speed = s
 
-    def __init__(self, cat_name, cat_age, cat_weight, cat_speed, cat_fq):
-        self.name = cat_name
-        self.age = cat_age
-        self.weight = cat_weight
-        self.speed = cat_speed
-        self.fq = cat_fq
-
-    def Run(self, new_speed):
+    def run(self, new_speed) -> None:
         self.speed = new_speed
-    
-    def Stop(self):
+
+    def stop(self) -> None:
         self.speed = 0
 
-    def Eat(self, food):
-        self.weight += food
+class Cat(Animal):
 
-    def Purr(self, freq):
+    def __init__(self, n, a, w, s):
+        super().__init__(a, w, s)
+        self.name = n
+        self.fq = 100
+
+    def purr(self, freq):
         self.fq = freq
 
-    def Sleep(self):
-        self.Stop()
-        self.fq = 0
-        self.weight -= 0.1
 
-my_cat = Cat('Муся', 1, 2, 4, 100)
-my_cat.Run(10)
+class Bird(Animal):
+
+    def fly(self, new_speed):
+        self.run(new_speed)
+
+
+my_cat = Cat('Муся', 1, 3.5, 20)
+my_cat.run(5)
+my_cat.purr(50)
 print(my_cat.name)
+
+bird = Bird(3, 1.5, 2)
+print(bird.age)
