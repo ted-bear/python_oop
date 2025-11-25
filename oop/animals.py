@@ -1,8 +1,13 @@
+import random
+
 class Animal:
     def __init__(self, a, w, s):
         self.age = a
         self.weight = w
         self.speed = s
+
+    def foo(self):
+        pass
 
     def run(self, new_speed) -> None:
         self.speed = new_speed
@@ -17,20 +22,32 @@ class Cat(Animal):
         self.name = n
         self.fq = 100
 
+    def foo(self):
+        print('Кошка мурлычет')
+
     def purr(self, freq):
         self.fq = freq
 
 
 class Bird(Animal):
 
+    def foo(self):
+        print('Птица поет')
+
     def fly(self, new_speed):
         self.run(new_speed)
 
 
-my_cat = Cat('Муся', 1, 3.5, 20)
-my_cat.run(5)
-my_cat.purr(50)
-print(my_cat.name)
+if __name__ == '__main__':
+    animals = []
 
-bird = Bird(3, 1.5, 2)
-print(bird.age)
+    for i in range(500):
+        rand = random.Random()
+        num = rand.randint(0, 1)
+        if num == 0:
+            animals.append(Cat("M", 1 ,1, 1))
+        else:
+            animals.append(Bird(1, 1, 1))
+
+    for animal in animals:
+        animal.foo()
